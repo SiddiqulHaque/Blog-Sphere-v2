@@ -14,8 +14,6 @@ const Singlepost = () => {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [updateMode, setUpdateMode] = useState(false);
-  const PF = "https://blog-sphere-fs4z.onrender.com/";
-  console.log(user);
   useEffect(() => {
     const getpost = async () => {
       const res = await axios.get("/posts/" + path);
@@ -61,7 +59,7 @@ const Singlepost = () => {
     <div className="singlepost">
       <div className="singlepostwrapper">
         {post.photo ? (
-          <img src={PF + post.photo} alt="" className="singlepostimg" />
+          <img src={post.photo} alt="" className="singlepostimg" />
         ) : (
           <img
             src="https://www.seiu1000.org/sites/main/files/main-images/camera_lense_0.jpeg"

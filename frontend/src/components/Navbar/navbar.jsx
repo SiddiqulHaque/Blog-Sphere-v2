@@ -65,7 +65,6 @@ import './navbar.css';
 const Navbar = () => {
   const { user, dispatch } = useContext(Context);
   const [isOpen, setIsOpen] = useState(false); // State to manage menu toggle
-  const PF = "https://blog-sphere-fs4z.onrender.com/";
 
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
@@ -95,7 +94,7 @@ const Navbar = () => {
         {
           user ? (
             <Link to="/settings">
-              <img className='nav-img' src={PF + user.profilePic} alt="" />
+              <img className='nav-img' src={user.profilePic} alt="" />
             </Link>
           ) : (
             <ul className='navlistl'>

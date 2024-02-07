@@ -10,28 +10,30 @@ const Settings = () => {
   const [username, setUsername] = useState(user.username);
   const [email, setEmail] = useState(user.email);
   const [success, setSuccess] = useState(false);
-  // const [password, setPassword] = useState("");
-  const preset_key='ppe1wd2s';
-  const handleFile=async(event)=>{
-      const file=event.target.files[0];
-      const formData=new FormData();
-      formData.append("file",file);
-      formData.append("upload_preset",preset_key);
-      axios.post(`https://api.cloudinary.com/v1_1/daxshafbw/image/upload`,formData).then(res=>{
-        console.log(res.data);
-      }).catch(err=>{
-        return err;
+  const preset_key = "ppe1wd2s";
+  const handleFile = async (event) => {
+    const file = event.target.files[0];
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", preset_key);
+    axios
+      .post(`https://api.cloudinary.com/v1_1/daxshafbw/image/upload`, formData)
+      .then((res) => {
+        setFile(res.data.secure_url);
       })
-  }
-  const handleDelete=async ()=>{
+      .catch((err) => {
+        return err;
+      });
+  };
+  const handleDelete = async () => {
     try {
-      await axios.delete(`/users/${user._id}`,{data:{username:user.username}});
-      dispatch({type:"LOGOUT"});
+      await axios.delete(`/users/${user._id}`, {
+        data: { username: user.username },
+      });
+      dispatch({ type: "LOGOUT" });
       window.location.replace("/register");
-    } catch (err) {
-      
-    }
-  }
+    } catch (err) {}
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch({ type: "UPDATE_START" });
@@ -41,14 +43,7 @@ const Settings = () => {
       email,
     };
     if (file) {
-      const data = new FormData();
-      const filename = Date.now() + file.name;
-      data.append("name", filename);
-      data.append("file", file);
-      updatedUser.profilePic = filename;
-      try {
-        await axios.post("/upload", data);
-      } catch (err) {}
+      updatedUser.profilePic = file;
     }
     try {
       const res = await axios.put("/users/" + user._id, updatedUser);
@@ -63,34 +58,49 @@ const Settings = () => {
       <div className="settingswrapper">
         <div className="settingstitle">
           <span className="update">Update your Account</span>
-          <span className="delete" onClick={handleDelete}>Delete your Account</span>
+          <span className="delete" onClick={handleDelete}>
+            Delete your Account
+          </span>
         </div>
         <form className="settingsform" onSubmit={handleSubmit}>
           <label>Profile Picture</label>
           <div className="ppsettings">
-          
-            <img
-              src=""
-              alt=""
-            />
+            {file ? (
+              <img src={file} alt="" />
+            ) : (
+              <img src={user.profilePic} alt="" />
+            )}
+            {/* <img src={file} alt="" /> */}
             <label htmlFor="fileinput">
               <FaUserAlt className="ppsettingsicon" />
             </label>
-            <input type="file" id="fileinput" style={{ display: "none" }} onChange={handleFile} />
+            <input
+              type="file"
+              id="fileinput"
+              style={{ display: "none" }}
+              onChange={handleFile}
+            />
           </div>
           {/* <label>Name</label>
           <input type="text" placeholder="Siddiq" /> */}
           <label>Username</label>
-          <input type="text" value={username}
-            onChange={(e) => setUsername(e.target.value)}/>
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
           <label>Email</label>
-          <input  type="email"
+          <input
+            type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}/>
+            onChange={(e) => setEmail(e.target.value)}
+          />
           {/* <label>Password</label>
           <input type="password"
             onChange={(e) => setPassword(e.target.value)} /> */}
-          <button className="settingssubmit" type="submit">Update</button>
+          <button className="settingssubmit" type="submit">
+            Update
+          </button>
           {success && (
             <span
               style={{ color: "green", textAlign: "center", marginTop: "20px" }}

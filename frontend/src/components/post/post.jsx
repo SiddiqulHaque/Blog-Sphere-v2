@@ -4,11 +4,10 @@ import { Link } from "react-router-dom";
 // import user from "../../../../API/models/user";
 import { Context } from "../../Context/Context";
 const Post = ({ post }) => {
-  const PF = "https://blog-sphere-fs4z.onrender.com/";
   const { user } = useContext(Context);
   return (
     <div className="post">
-      {post.photo ?( <img className="postimage" src={PF + post.photo} alt="" />):(<img src="https://www.seiu1000.org/sites/main/files/main-images/camera_lense_0.jpeg" alt="" className="writeimage" />)}
+      {post.photo ?( <img className="postimage" src={post.photo} alt="" />):(<img src="https://www.seiu1000.org/sites/main/files/main-images/camera_lense_0.jpeg" alt="" className="writeimage" />)}
 
       <div className="postinfo">
         <div className="postcategs">
