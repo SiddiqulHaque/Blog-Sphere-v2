@@ -10,8 +10,10 @@ const Settings = () => {
   const [username, setUsername] = useState(user.username);
   const [email, setEmail] = useState(user.email);
   const [success, setSuccess] = useState(false);
+  const [wait, setWait] = useState(false);
   const preset_key = "ppe1wd2s";
   const handleFile = async (event) => {
+    setWait(true);
     const file = event.target.files[0];
     const formData = new FormData();
     formData.append("file", file);
@@ -20,6 +22,7 @@ const Settings = () => {
       .post(`https://api.cloudinary.com/v1_1/daxshafbw/image/upload`, formData)
       .then((res) => {
         setFile(res.data.secure_url);
+        setWait(false);
       })
       .catch((err) => {
         return err;
@@ -98,9 +101,11 @@ const Settings = () => {
           {/* <label>Password</label>
           <input type="password"
             onChange={(e) => setPassword(e.target.value)} /> */}
-          <button className="settingssubmit" type="submit">
+
+          <button className="settingssubmit" type="submit" disabled={wait}>
             Update
           </button>
+
           {success && (
             <span
               style={{ color: "green", textAlign: "center", marginTop: "20px" }}
