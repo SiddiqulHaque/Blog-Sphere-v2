@@ -1,0 +1,90 @@
+.settings {
+  display: flex;
+  /* flex-direction: column; Change to column layout on smaller screens */
+}
+
+.settingswrapper {
+  flex: 9;
+  padding: 20px;
+}
+
+.settingstitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.update {
+  font-size: 24px; /* Decrease font size for mobile */
+  margin-bottom: 20px;
+  color: #1ea295;
+}
+
+.delete {
+  color: red;
+  font-size: 14px; /* Decrease font size for mobile */
+  cursor: pointer;
+}
+
+.settingsform {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10vw; /* Adjust margin for mobile */
+}
+
+.ppsettings {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.ppsettings > img {
+  width: 50px; /* Decrease image size for mobile */
+  height: 50px; /* Decrease image size for mobile */
+  border-radius: 15px; /* Decrease border radius for mobile */
+}
+
+.ppsettingsicon {
+  width: 20px; /* Decrease icon size for mobile */
+  height: 20px; /* Decrease icon size for mobile */
+  border-radius: 50%;
+  background-color: #1ea295;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.settingsform > label {
+  font-size: 18px; /* Decrease font size for mobile */
+  margin-top: 20px;
+}
+
+.settingsform > input {
+  margin: 10px 0;
+  height: 30px;
+  width: 100%; /* Set width to full for mobile */
+  border: 1px solid #1ea295;
+  border-radius: 3px;
+}
+
+.settingssubmit {
+  width: 150px;
+  align-self: center;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  background-color: #1ea295;
+  padding: 10px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+/* Media queries for mobile responsiveness */
+@media screen and (max-width: 768px) {
+  .settingsform {
+    margin-left: 0; /* Reset margin for mobile */
+  }
+}

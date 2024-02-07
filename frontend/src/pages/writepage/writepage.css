@@ -1,0 +1,115 @@
+.writepage {
+  padding-top: 20px;
+}
+*{
+  margin: 0;
+}
+.writeform {
+  position: relative;
+  width: 100%; /* Ensure it takes the full width */
+  box-sizing: border-box; /* Include padding and border in the width calculation */
+}
+
+.writeimage {
+  margin-left: 175px;
+  width: 73.5vw;
+  height: 275px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.writeformgroup {
+  margin-left: 150px;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  width: 25px;
+  height: 25px;
+  font-size: 50px;
+  color: #1ea295;
+  cursor: pointer;
+}
+
+.input {
+  font-size: 30px;
+  padding: 20px;
+  width: 70vw;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.text {
+  font-size: 20px;
+  height: 50vh;
+  margin-left: 25px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: 2px solid #1ea295;
+}
+
+.title {
+  border-radius: 8px;
+  border: 2px solid #1ea295;
+}
+
+.submit {
+  position: absolute;
+  left: 175px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #1ea295;
+  color: white;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+}
+
+/* Media queries for mobile responsiveness */
+@media screen and (max-width: 768px) {
+  .writeimage {
+    width: 100%; /* Set image width to 100% */
+    height: auto;
+    border-radius: 0;
+    margin-left: 0;
+  }
+
+  .writeformgroup {
+    margin-left: 0;
+    padding-left: 0; /* Reset padding */
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .icon {
+    font-size: 40px;
+    
+  }
+
+  .input {
+    font-size: 20px;
+    width: 100%; 
+  }
+
+  .text {
+    font-size: 16px;
+    width: 100%;
+    height: 20vh;
+    margin-left: 2px;
+    
+  }
+
+  .submit {
+    left: 0;
+    width: 100%;
+  }
+
+  .writeform {
+    margin-left: 0; /* Adjust margin to fit the image width */
+    margin-right: 0;
+    width: calc(100% - 50px); /* Adjust width to fit the image width */
+  }
+}

@@ -1,0 +1,14 @@
+.posts {
+    flex: 9;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+/* Media query for mobile responsiveness */
+@media screen and (max-width: 768px) {
+    .posts {
+        flex: 1; /* Change flex to 1 to make it take full width */
+        margin: 10px; /* Adjust margin for smaller screens */
+    }
+}
