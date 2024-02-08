@@ -34,7 +34,7 @@ const Writepage = () => {
       newPost.photo = file;
     }
     try {
-      const res = await axios.post("/posts", newPost);
+      const res = await axios.post("https://blog-sphere-b9vl.onrender.com/api/posts", newPost);
       window.location.replace("/post/" + res.data._id);
     } catch (err) {
       return err;

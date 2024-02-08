@@ -30,7 +30,7 @@ const Settings = () => {
   };
   const handleDelete = async () => {
     try {
-      await axios.delete(`/users/${user._id}`, {
+      await axios.delete(`https://blog-sphere-b9vl.onrender.com/api/users/${user._id}`, {
         data: { username: user.username },
       });
       dispatch({ type: "LOGOUT" });
@@ -49,7 +49,7 @@ const Settings = () => {
       updatedUser.profilePic = file;
     }
     try {
-      const res = await axios.put("/users/" + user._id, updatedUser);
+      const res = await axios.put("https://blog-sphere-b9vl.onrender.com/api/users/" + user._id, updatedUser);
       setSuccess(true);
       dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
     } catch (err) {

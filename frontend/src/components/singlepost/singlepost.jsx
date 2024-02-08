@@ -16,7 +16,7 @@ const Singlepost = () => {
   const [updateMode, setUpdateMode] = useState(false);
   useEffect(() => {
     const getpost = async () => {
-      const res = await axios.get("/posts/" + path);
+      const res = await axios.get("https://blog-sphere-b9vl.onrender.com/api/posts/" + path);
       setpost(res.data);
       setTitle(res.data.title);
       setDesc(res.data.desc);
@@ -27,7 +27,7 @@ const Singlepost = () => {
     // console.log(post._id);
     if(user.user.username === post.username){
       try {
-        await axios.delete(`/posts/${post._id}`, {
+        await axios.delete(`https://blog-sphere-b9vl.onrender.com/api/posts/${post._id}`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${localStorage.getItem("your_token")}`,
@@ -44,7 +44,7 @@ const Singlepost = () => {
   
   const handleUpdate = async () => {
     try {
-      await axios.put(`/posts/${post._id}`, {
+      await axios.put(`https://blog-sphere-b9vl.onrender.com/api/posts/${post._id}`, {
         username: user?.username,
         title,
         desc,

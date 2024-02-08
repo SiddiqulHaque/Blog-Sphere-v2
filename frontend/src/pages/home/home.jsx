@@ -10,7 +10,7 @@ const Home = () => {
   const {search} = useLocation();
   useEffect(() => {
     const fetchposts = async () => {
-      const res = await axios.get("/posts" + search);
+      const res = await axios.get("https://blog-sphere-b9vl.onrender.com/api/posts" + search);
       setPosts(res.data);
     };
     fetchposts();
