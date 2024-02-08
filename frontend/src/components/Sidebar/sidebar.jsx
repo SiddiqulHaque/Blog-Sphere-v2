@@ -11,13 +11,13 @@ import {
 } from "react-icons/fa";
 const Sidebar = () => {
   const [cats,setcats]=useState([]);
-  useEffect(()=>{
-    const getcats=async()=>{
-      const res=await axios.get("/categories")
-      setcats(res.data);
-    }
-    getcats();
-  },[])
+  // useEffect(()=>{
+  //   const getcats=async()=>{
+  //     const res=await axios.get("/categories")
+  //     setcats(res.data);
+  //   }
+  //   getcats();
+  // },[])
   return (
     <div className="sidebar">
       <div className="sidebaritem">
