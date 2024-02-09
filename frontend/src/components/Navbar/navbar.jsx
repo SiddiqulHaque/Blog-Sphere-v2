@@ -99,22 +99,26 @@ const Navbar = () => {
               ALL BLOGS
             </Link>
           </li>
-          <li className="navlist-item" onClick={() => setIsOpen(false)}>
-            <Link
-              className="link"
-              to={user ? `/?user=${user.username}` : "/login"}
-            >
-              {user && "MY POSTS"}
-            </Link>
-          </li>
-          <li className="navlist-item" onClick={() => setIsOpen(false)}>
-            <Link className="link" to="/write">
-              {user && "WRITE"}
-            </Link>
-          </li>
-          <li className="navlist-item" onClick={handleLogout}>
-            {user && "LOGOUT"}
-          </li>
+          {user && (
+            <>
+              <li className="navlist-item" onClick={() => setIsOpen(false)}>
+                <Link
+                  className="link"
+                  to={user ? `/?user=${user.username}` : "/login"}
+                >
+                  {user && "MY POSTS"}
+                </Link>
+              </li>
+              <li className="navlist-item" onClick={() => setIsOpen(false)}>
+                <Link className="link" to="/write">
+                  {user && "WRITE"}
+                </Link>
+              </li>
+              <li className="navlist-item" onClick={handleLogout}>
+                {user && "LOGOUT"}
+              </li>
+            </>
+          )}
         </ul>
       </div>
       <div className="navright">
