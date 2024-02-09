@@ -2,28 +2,30 @@ import React, { useState } from "react";
 import "./register.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { FaEye } from "react-icons/fa";
 const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
+  const [seepass, setseePass] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(false)
+    setError(false);
     try {
-      const res = await axios.post("https://blog-sphere-b9vl.onrender.com/api/auth/register", {
-        username,
-        email,
-        password,
-      });
+      const res = await axios.post(
+        "https://blog-sphere-b9vl.onrender.com/api/auth/register",
+        {
+          username,
+          email,
+          password,
+        }
+      );
       res.data && window.location.replace("/login");
     } catch (error) {
-
       setError(true);
       return error;
     }
-    
-    
   };
   return (
     <div className="register">
@@ -44,12 +46,23 @@ const Register = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
         <label>Password</label>
-        <input
-          className="registerinput"
-          type="Password"
-          placeholder="Enter your Password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <div className="password">
+          <input
+            className="pass"
+            type={seepass ? "text" : "password"}
+            placeholder="Enter your Password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <FaEye
+            style={{ cursor: "pointer" }}
+            onClick={() =>
+              setseePass((prev) => {
+                return !prev;
+              })
+            }
+          ></FaEye>
+        </div>
+
         <button className="registerbtn" type="submit">
           <Link className="link" to="/register">
             Signup
@@ -62,7 +75,7 @@ const Register = () => {
           </Link>
         </span>
       </form>
-      {error && <span className="Error">Something went wrong!</span> }
+      {error && <span className="Error">Something went wrong!</span>}
     </div>
   );
 };

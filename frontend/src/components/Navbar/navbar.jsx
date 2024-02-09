@@ -31,7 +31,7 @@
 //         </div>
 //         <div className="navright">
 //         {
-          
+
 //           user?(
 //             <Link to="/settings">
 //             <img className='nav-img' src={PF+user.profilePic} alt="" />
@@ -44,7 +44,7 @@
 //             </ul>
 //           )
 //         }
-            
+
 //             {/* <FaSearch className='nav-searchicon'/> */}
 //             {user && (<Link className='link' to="/settings">
 //             <li className='navlist-item nav-searchicon'>{user?.username}</li>
@@ -56,11 +56,17 @@
 // }
 
 // export default Navbar
-import React, { useContext, useEffect, useState } from 'react';
-import { FaFacebookSquare, FaTwitterSquare, FaInstagramSquare, FaSearch, FaBars } from "react-icons/fa";
+import React, { useContext, useEffect, useState } from "react";
+import {
+  FaFacebookSquare,
+  FaTwitterSquare,
+  FaInstagramSquare,
+  FaSearch,
+  FaBars,
+} from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { Context } from '../../Context/Context';
-import './navbar.css';
+import { Context } from "../../Context/Context";
+import "./navbar.css";
 
 const Navbar = () => {
   const { user, dispatch } = useContext(Context);
@@ -72,40 +78,67 @@ const Navbar = () => {
   };
 
   return (
-    <div className='navbar'>
+    <div className="navbar">
       <div className="navleft">
-        <FaFacebookSquare className='nav-icon' />
-        <FaTwitterSquare className='nav-icon' />
+        <FaFacebookSquare className="nav-icon" />
+        <FaTwitterSquare className="nav-icon" />
         {/* <FaPinterestSquare className='nav-icon'/> */}
-        <FaInstagramSquare className='nav-icon' />
+        <FaInstagramSquare className="nav-icon" />
       </div>
       {/* Hamburger menu icon */}
       <FaBars className="hamburger-menu" onClick={() => setIsOpen(!isOpen)} />
-      <div className={`navcenter ${isOpen ? 'open' : ''}`}>
+      <div className={`navcenter ${isOpen ? "open" : ""}`}>
         <ul className="navlist">
-          <li className="navlist-item" onClick={()=>setIsOpen(false)}><Link className='link' to="/">HOME</Link></li>
-          <li className="navlist-item" onClick={()=>setIsOpen(false)} ><Link className='link' to="/">ALL BLOGS</Link></li>
-          <li className="navlist-item" onClick={()=>setIsOpen(false)}><Link className='link' to={user ? (`/?user=${user.username}`) : ("/login")}>MY POSTS</Link></li>
-          <li className="navlist-item" onClick={()=>setIsOpen(false)}><Link className='link' to="/write">WRITE</Link></li>
-          <li className="navlist-item" onClick={handleLogout} >{user && "LOGOUT"}</li>
+          <li className="navlist-item" onClick={() => setIsOpen(false)}>
+            <Link className="link" to="/">
+              HOME
+            </Link>
+          </li>
+          <li className="navlist-item" onClick={() => setIsOpen(false)}>
+            <Link className="link" to="/">
+              ALL BLOGS
+            </Link>
+          </li>
+          <li className="navlist-item" onClick={() => setIsOpen(false)}>
+            <Link
+              className="link"
+              to={user ? `/?user=${user.username}` : "/login"}
+            >
+              {user && "MY POSTS"}
+            </Link>
+          </li>
+          <li className="navlist-item" onClick={() => setIsOpen(false)}>
+            <Link className="link" to="/write">
+              {user && "WRITE"}
+            </Link>
+          </li>
+          <li className="navlist-item" onClick={handleLogout}>
+            {user && "LOGOUT"}
+          </li>
         </ul>
       </div>
       <div className="navright">
-        {
-          user ? (
-            <Link to="/settings">
-              <img className='nav-img' src={user.profilePic} alt="" />
-            </Link>
-          ) : (
-            <ul className='navlistl'>
-              <li className="navlist-item"><Link className='link' to="/login">LOGIN</Link></li>
-              <li className="navlist-item"><Link className='link' to="/register">SIGNUP</Link></li>
-            </ul>
-          )
-        }
+        {user ? (
+          <Link to="/settings">
+            <img className="nav-img" src={user.profilePic} alt="" />
+          </Link>
+        ) : (
+          <ul className="navlistl">
+            <li className="navlist-item">
+              <Link className="link" to="/login">
+                LOGIN
+              </Link>
+            </li>
+            <li className="navlist-item">
+              <Link className="link" to="/register">
+                SIGNUP
+              </Link>
+            </li>
+          </ul>
+        )}
         {user && (
-          <Link className='link' to="/settings">
-            <li className='navlist-item nav-searchicon'>{user?.username}</li>
+          <Link className="link" to="/settings">
+            <li className="navlist-item nav-searchicon">{user?.username}</li>
           </Link>
         )}
       </div>
