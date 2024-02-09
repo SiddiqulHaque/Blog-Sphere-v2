@@ -68,6 +68,6 @@
   }
   @media screen and (max-width: 768px) {
     .Error {
-      top: 75px; /* Reset margin for mobile */
+      top: 55px; /* Reset margin for mobile */
     }
   }
